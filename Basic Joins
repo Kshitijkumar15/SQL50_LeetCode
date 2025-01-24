@@ -1,3 +1,16 @@
 // Replace Employee ID With The Unique Identifier
 
 1. Select EmployeeUNI.unique_id, Employees.name from Employees Left Join EmployeeUNI on Employees.id = EmployeeUNI.id;
+
+// Product Sales Analysis I
+
+2. Select p.product_name, s.year, s.price from Sales s Join Product p On s.product_id = p.product_id;
+
+// Customer Who Visited but Did Not Make Any Transactions
+
+3. SELECT v.customer_id, COUNT(v.visit_id) AS count_no_trans 
+from Visits v 
+LEFT JOIN Transactions t 
+ON v.visit_id = t.visit_id  
+WHERE t.transaction_id IS NULL 
+GROUP BY v.customer_id; 
