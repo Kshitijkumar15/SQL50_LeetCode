@@ -20,3 +20,14 @@ WHERE t.transaction_id IS NULL GROUP BY v.customer_id;
 5. Select a1.machine_id, round(avg(a2.timestamp-a1.timestamp), 3) as processing_time from Activity a1 
 Join Activity a2 on a1.machine_id=a2.machine_id and a1.process_id=a2.process_id and a1.activity_type='start' and a2.activity_type='end' 
 group by a1.machine_id
+
+// Employee Bonus
+
+6. Select e.name, b.bonus from Employee e left Join Bonus b On e.empID = b.empId where bonus < 1000 or bonus IS Null;
+
+// Students and Examinations
+
+7. SELECT S.student_id, S.student_name, SUB.subject_name, 
+count(E.subject_name) AS attended_exams FROM Students S CROSS JOIN Subjects SUB LEFT OUTER JOIN Examinations E ON S.student_id = E.student_id AND SUB.subject_name = E.subject_name  
+GROUP BY S.student_id, S.student_name, SUB.subject_name ORDER BY 
+S.student_id, SUB.subject_name;
