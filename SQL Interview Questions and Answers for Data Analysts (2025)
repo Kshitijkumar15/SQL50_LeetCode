@@ -1,0 +1,8 @@
+// one table has 3 rows and the other has 2. How many rows does the resulting table will have
+
+Select t1.id, t1.number as n1, t2.id, t2.number as n2 from table1 as t1 inner join table2 as t2 on t1.number = t2.number;
+
+//Top 3 emolyees from each department based on salaries
+
+with a as (select * dense_rank() over(partition by department order by salary desc) rank from employees)
+select * from a where rank <=3;
